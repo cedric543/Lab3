@@ -70,7 +70,6 @@ public class Main {
         return s.nextLine();
     }
 
-    // Note: CheckStyle is configured so that we don't need javadoc for private methods
     private static String promptForLanguage(Translator translator, String country) {
         List<String> countries = translator.getCountries();
 

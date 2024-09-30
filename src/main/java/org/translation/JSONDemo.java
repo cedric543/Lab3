@@ -26,7 +26,6 @@ public class JSONDemo {
         System.out.println(getKeyOneOfSecond(jsonArray));
     }
 
-    // hi
     /**
      * Returns the value of key "key1" from the second object in the given jsonArray.
      * The code may assume that the key exists and that the jsonArray has at least two items in it.
