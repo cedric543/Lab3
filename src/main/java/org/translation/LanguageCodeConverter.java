@@ -55,7 +55,6 @@ public class LanguageCodeConverter {
         }
     }
 
-    // hi
     /**
      * Returns the name of the language for the given language code.
      * @param code the language code
