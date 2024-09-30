@@ -1,13 +1,13 @@
+
 package org.translation;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-
 
 /**
  * This class provides the service of converting country codes to their names.
@@ -15,8 +15,8 @@ import java.util.HashMap;
 public class CountryCodeConverter {
 
     // Maps to store the country codes and names
-    private Map<String, String> countryCodeToName; // Maps 3-letter codes to country names
-    private Map<String, String> countryNameToCode; // Maps country names to 3-letter codes
+    private Map<String, String> countryCodeToName;
+    private Map<String, String> countryNameToCode;
 
     /**
      * Default constructor which will load the country codes from "country-codes.txt"
@@ -45,19 +45,17 @@ public class CountryCodeConverter {
             // Skip the header and process each subsequent line
             for (int i = 1; i < lines.size(); i++) {
                 String line = lines.get(i);
-                String[] parts = line.split("\t"); // Assuming tab-separated values
+                String[] parts = line.split("\t");
 
-                if (parts.length >= 4) {
-                    String country = parts[0].trim();
-                    String alpha3Code = parts[2].trim().toLowerCase();
+                String country = parts[0].trim();
+                String alpha3Code = parts[2].trim().toLowerCase();
+                countryCodeToName.put(alpha3Code, country);
+                countryNameToCode.put(country, alpha3Code);
 
-                    // Populate the maps
-                    countryCodeToName.put(alpha3Code, country);
-                    countryNameToCode.put(country, alpha3Code);
-                }
             }
 
-        } catch (IOException | URISyntaxException ex) {
+        }
+        catch (IOException | URISyntaxException ex) {
             throw new RuntimeException("Error loading country code data from file: " + filename, ex);
         }
     }

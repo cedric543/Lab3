@@ -18,8 +18,8 @@ import org.json.JSONObject;
  */
 public class JSONTranslator implements Translator {
 
-    private Map<String, JSONObject> countryMap;  // Stores countries and their JSON data
-    private List<String> countryCodes;            // List of country codes
+    private Map<String, JSONObject> countryMap;
+    private List<String> countryCodes;
 
     /**
      * Constructs a JSONTranslator using data from the sample.json resources file.
@@ -34,7 +34,6 @@ public class JSONTranslator implements Translator {
      * @throws RuntimeException if the resource file can't be loaded properly
      */
     public JSONTranslator(String filename) {
-        // read the file to get the data to populate things...
         try {
             String jsonString = Files.readString(Paths.get(getClass().getClassLoader().getResource(filename).toURI()));
             JSONArray jsonArray = new JSONArray(jsonString);
@@ -42,14 +41,14 @@ public class JSONTranslator implements Translator {
             countryMap = new HashMap<>();
             countryCodes = new ArrayList<>();
 
-            // Populate the countryMap and countryCodes
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject country = jsonArray.getJSONObject(i);
                 String alpha3Code = country.getString("alpha3");
                 countryMap.put(alpha3Code, country);
                 countryCodes.add(alpha3Code);
             }
-        } catch (IOException | URISyntaxException ex) {
+        }
+        catch (IOException | URISyntaxException ex) {
             throw new RuntimeException(ex);
         }
     }
@@ -61,8 +60,8 @@ public class JSONTranslator implements Translator {
 
         if (countryData != null) {
             for (String key : countryData.keySet()) {
-                if (!key.equals("id") && !key.equals("alpha2") && !key.equals("alpha3")) {
-                    languages.add(key); // Add language codes (excluding metadata keys)
+                if (!"id".equals(key) && !"alpha2".equals(key) && !"alpha3".equals(key)) {
+                    languages.add(key);
                 }
             }
         }
@@ -72,7 +71,7 @@ public class JSONTranslator implements Translator {
 
     @Override
     public List<String> getCountries() {
-        return new ArrayList<>(countryCodes); // Return a copy of the country codes
+        return new ArrayList<>(countryCodes);
     }
 
     @Override
@@ -80,9 +79,9 @@ public class JSONTranslator implements Translator {
         JSONObject countryData = countryMap.get(country);
 
         if (countryData != null && countryData.has(language)) {
-            return countryData.getString(language); // Return translation if available
+            return countryData.getString(language);
         }
 
-        return null; // Return null if country or language is not found
+        return null;
     }
 }

@@ -13,10 +13,9 @@ import java.util.Map;
  */
 public class LanguageCodeConverter {
 
-    // Instance variables to store the mapping between language codes and names
-    private Map<String, String> codeToLanguageMap; // Maps language codes to language names
-    private Map<String, String> languageToCodeMap; // Maps language names to language codes
-    private int numLanguages; // To keep track of the number of languages
+    private Map<String, String> codeToLanguageMap;
+    private Map<String, String> languageToCodeMap;
+    private int numLanguages;
 
     /**
      * Default constructor which will load the language codes from "language-codes.txt"
@@ -50,7 +49,8 @@ public class LanguageCodeConverter {
                     numLanguages++;
                 }
             }
-        } catch (IOException | URISyntaxException ex) {
+        }
+        catch (IOException | URISyntaxException ex) {
             throw new RuntimeException(ex);
         }
     }

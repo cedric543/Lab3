@@ -59,14 +59,13 @@ public class JSONTranslationExample {
             JSONObject country = jsonArray.getJSONObject(i);
 
             if (country.has("alpha3") && country.getString("alpha3").equalsIgnoreCase(countryCode)) {
-                    return country.getString(languageCode);
+                return country.getString(languageCode);
 
             }
         }
 
         return "Country not found";
     }
-
 
     /**
      * Prints the Spanish translation of Canada.
