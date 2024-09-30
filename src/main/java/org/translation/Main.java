@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+// hi
 /**
  * Main class for this program.
  * Complete the code according to the "to do" notes.<br/>

@@ -68,7 +68,6 @@ public class JSONTranslator implements Translator {
         return languages;
     }
 
-    // hi
     @Override
     public List<String> getCountries() {
         return new ArrayList<>(countryCodes);
