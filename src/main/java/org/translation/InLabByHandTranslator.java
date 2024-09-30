@@ -13,7 +13,7 @@ public class InLabByHandTranslator implements Translator {
 
     public static final String CANADA = "can";
 
-    // Define the translations in a map
+    // hi
     private static final Map<String, String> TRANSLATIONS = new HashMap<>();
 
     static {

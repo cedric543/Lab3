@@ -16,7 +16,6 @@ public class JSONTranslationExample {
     public static final int CANADA_INDEX = 30;
     private final JSONArray jsonArray;
 
-    // Note: CheckStyle is configured so that we are allowed to omit javadoc for constructors
     public JSONTranslationExample() {
         try {
             // this next line of code reads in a file from the resources folder as a String,

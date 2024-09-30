@@ -28,6 +28,7 @@ public class JSONTranslator implements Translator {
         this("sample.json");
     }
 
+    // hi
     /**
      * Constructs a JSONTranslator populated using data from the specified resources file.
      * @param filename the name of the file in resources to load the data from
