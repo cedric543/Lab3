@@ -55,13 +55,8 @@ public class Main {
         }
     }
 
-    // Note: CheckStyle is configured so that we don't need javadoc for private methods
     private static String promptForCountry(Translator translator) {
         List<String> countries = translator.getCountries();
-        // TODO Task: replace the following println call, sort the countries alphabetically,
-        //            and print them out; one per line
-        //      hint: class Collections provides a static sort method
-        // TODO Task: convert the country codes to the actual country names before sorting
         Collections.sort(countries);
 
         for (String country : countries) {
@@ -78,10 +73,6 @@ public class Main {
     // Note: CheckStyle is configured so that we don't need javadoc for private methods
     private static String promptForLanguage(Translator translator, String country) {
         List<String> countries = translator.getCountries();
-        // TODO Task: replace the line below so that we sort the languages
-        //  alphabetically and print them out; one per line
-        // TODO Task: convert the language codes to the actual language
-        //  names before sorting
 
         System.out.println(translator.getCountryLanguages(country));
 
