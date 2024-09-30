@@ -1,5 +1,6 @@
 package org.translation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -56,26 +57,44 @@ public class Main {
     }
 
     private static String promptForCountry(Translator translator) {
+        // Get the list of countries
         List<String> countries = translator.getCountries();
-        Collections.sort(countries);
 
-        for (String country : countries) {
+        CountryCodeConverter converter = new CountryCodeConverter();
 
-            System.out.println(country);
-
+        List<String> countryNames = new ArrayList<>();
+        for (String code : countries) {
+            countryNames.add(converter.fromCountryCode(code));
         }
-        System.out.println(countries);
+
+        Collections.sort(countryNames);
+        for (String country: countryNames){
+            System.out.println(country);
+        }
         System.out.println("select a country from above:");
+
         Scanner s = new Scanner(System.in);
         return s.nextLine();
+
     }
 
     private static String promptForLanguage(Translator translator, String country) {
-        List<String> countries = translator.getCountries();
 
-        System.out.println(translator.getCountryLanguages(country));
+        List<String> languageCodes = translator.getCountryLanguages(country);
+        List<String> languageNames = new ArrayList<>();
+        LanguageCodeConverter converter = new LanguageCodeConverter();
+        for (String code : languageCodes) {
+            languageNames.add(converter.fromLanguageCode(code));
+        }
 
-        System.out.println("select a language from above:");
+        Collections.sort(languageNames);
+
+        for (String language : languageNames) {
+            System.out.println(language);
+        }
+
+        System.out.println("Select a language from above:");
+
         Scanner s = new Scanner(System.in);
         return s.nextLine();
     }
